@@ -131,13 +131,36 @@ function App() {
   ];
 
   return (
-    <div>
-      <Box m="40px 0 0 0" height="75vh">
+    <div style={({ height: "100vh" }, { display: "flex" })}>
+      <Box
+        m="40px 0 0 0"
+        height="50vh"
+        width="100%"
+        sx={{
+          "& .MuiDataGrid-root": {
+            border: "none",
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "none",
+          },
+
+          "& .MuiDataGrid-columnHeaders": {
+            backgroundColor: "#a4a9fc",
+            // color: "white",
+            fontSize: "1rem",
+            borderBottom: "none",
+          },
+        }}
+      >
         {" "}
         <DataGrid
           // data generally goes to the rows prop
           rows={rows}
           columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          disableSelectionOnClick
         />
       </Box>
     </div>
